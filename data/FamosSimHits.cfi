@@ -31,6 +31,7 @@ module famosSimHits = FamosProducer
 
 # PileUp Event Generation
 #	include "FastSimulation/PileUpProducer/data/PUProducer.cfi"
+	include "FastSimulation/PileUpProducer/data/PileUpSimulator.cfi"
 
 }
 
