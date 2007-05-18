@@ -2,7 +2,7 @@ module famosSimHits = FamosProducer
    { 
 	untracked int32 RunNumber = 1001
 	bool UseMagneticField = true
-	bool SimulatePileUp = true
+	bool SimulatePileUp = false
 	bool SimulateTracking = true
 	bool SimulateCalorimetry = true
 	untracked int32 Verbosity = 0
@@ -27,7 +27,6 @@ module famosSimHits = FamosProducer
 
 # FastCalorimetry
 	include "FastSimulation/Calorimetry/data/Calorimetry.cfi"
-
 
 # PileUp Event Generation
 	include "FastSimulation/PileUpProducer/data/PileUpSimulator.cfi"
