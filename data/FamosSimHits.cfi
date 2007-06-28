@@ -5,6 +5,7 @@ module famosSimHits = FamosProducer
 	bool SimulatePileUp = false
 	bool SimulateTracking = true
 	bool SimulateCalorimetry = true
+	bool SimulateMuons = true
 	untracked int32 Verbosity = 0
 
 # Gaussian or flat or no primary vertex smearing
