@@ -27,7 +27,7 @@ module famosSimHits = FamosProducer
 	include "FastSimulation/TrajectoryManager/data/TrackerSimHits.cfi"
 
 # FastCalorimetry
-	include "FastSimulation/Calorimetry/data/Calorimetry.cfi"
+	include "FastSimulation/Calorimetry/data/Calorimetry.cff"
 
 # PileUp Event Generation
 	include "FastSimulation/PileUpProducer/data/PileUpSimulator.cfi"
