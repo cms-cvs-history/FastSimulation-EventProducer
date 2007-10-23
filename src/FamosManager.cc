@@ -115,6 +115,7 @@ FamosManager::~FamosManager()
   if ( myPileUpSimulator ) delete myPileUpSimulator;
   if ( myCalorimetry) delete myCalorimetry;
   if ( random->theRootEngine() ) delete random->theRootEngine();
+  delete random;
 }
 
 void FamosManager::setupGeometryAndField(const edm::EventSetup & es)
