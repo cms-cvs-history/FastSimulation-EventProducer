@@ -1,36 +1,37 @@
 module famosSimHits = FamosProducer 
-   { 
-	untracked int32 RunNumber = 1001
-	bool UseMagneticField = true
-	bool SimulatePileUp = false
-	bool SimulateTracking = true
-	bool SimulateCalorimetry = true
-	bool SimulateMuons = true
-	untracked int32 Verbosity = 0
-
-# Gaussian or flat or no primary vertex smearing
-	include "FastSimulation/Event/data/GaussianVertexGenerator.cfi"
-#	include "FastSimulation/Event/data/FlatVertexGenerator.cfi"
-#	include "FastSimulation/Event/data/NoVertexGenerator.cfi"
-
-# Kinematic cuts for the particle filter in the SimEvent
-	include "FastSimulation/Event/data/ParticleFilter.cfi"
-
-# Material effects to be simulated in the tracker material and associated cuts
-	include "FastSimulation/MaterialEffects/data/MaterialEffects.cfi"
-
-
-# (De)activate decays of unstable particles (K0S, etc...)
-	include "FastSimulation/TrajectoryManager/data/ActivateDecays.cfi"
-
-# Conditions to save Tracker SimHits 
-	include "FastSimulation/TrajectoryManager/data/TrackerSimHits.cfi"
-
-# FastCalorimetry
-	include "FastSimulation/Calorimetry/data/Calorimetry.cff"
-
-# PileUp Event Generation
-	include "FastSimulation/PileUpProducer/data/PileUpSimulator.cfi"
+{ 
+    untracked int32 RunNumber = 1001
+    bool UseMagneticField = true
+    bool SimulatePileUp = false
+    bool SimulateTracking = true
+    bool SimulateCalorimetry = true
+    bool SimulateMuons = true
+    bool UseTRandomEngine = true
+    untracked int32 Verbosity = 0
+    
+    # Gaussian or flat or no primary vertex smearing
+    include "FastSimulation/Event/data/GaussianVertexGenerator.cfi"
+    #	include "FastSimulation/Event/data/FlatVertexGenerator.cfi"
+    #	include "FastSimulation/Event/data/NoVertexGenerator.cfi"
+    
+    # Kinematic cuts for the particle filter in the SimEvent
+    include "FastSimulation/Event/data/ParticleFilter.cfi"
+    
+    # Material effects to be simulated in the tracker material and associated cuts
+    include "FastSimulation/MaterialEffects/data/MaterialEffects.cfi"
+    
+    
+    # (De)activate decays of unstable particles (K0S, etc...)
+    include "FastSimulation/TrajectoryManager/data/ActivateDecays.cfi"
+    
+    # Conditions to save Tracker SimHits 
+    include "FastSimulation/TrajectoryManager/data/TrackerSimHits.cfi"
+    
+    # FastCalorimetry
+    include "FastSimulation/Calorimetry/data/Calorimetry.cff"
+    
+    # PileUp Event Generation
+    include "FastSimulation/PileUpProducer/data/PileUpSimulator.cfi"
 
 }
 
