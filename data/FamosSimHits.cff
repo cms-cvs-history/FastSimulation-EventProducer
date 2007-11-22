@@ -16,9 +16,6 @@ module famosSimHits = FamosProducer
     # Kinematic cuts for the particle filter in the SimEvent
     include "FastSimulation/Event/data/ParticleFilter.cfi"
     
-    # Description of the tracker material 
-    include "FastSimulation/TrackerSetup/data/TrackerMaterial.cfi"
-    
     # Material effects to be simulated in the tracker material and associated cuts
     include "FastSimulation/MaterialEffects/data/MaterialEffects.cfi"
     
