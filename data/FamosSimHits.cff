@@ -5,6 +5,7 @@ module famosSimHits = FamosProducer
     bool SimulateTracking = true
     bool SimulateCalorimetry = true
     bool SimulateMuons = true
+    bool ApplyAlignment = false
     bool UseTRandomEngine = true
     untracked int32 Verbosity = 0
     
