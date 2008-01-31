@@ -9,8 +9,9 @@ module famosSimHits = FamosProducer
     bool UseTRandomEngine = true
     untracked int32 Verbosity = 0
     
-    # Gaussian or flat or no primary vertex smearing
-    include "FastSimulation/Event/data/GaussianVertexGenerator.cfi"
+    # Gaussian or flat or no primary vertex smearing // Now EARLY CONDITIONS!
+    include "FastSimulation/Event/data/EarlyCollisionVertexGenerator.cfi"
+    # include "FastSimulation/Event/data/GaussianVertexGenerator.cfi"
     # include "FastSimulation/Event/data/FlatVertexGenerator.cfi"
     # include "FastSimulation/Event/data/NoVertexGenerator.cfi"
     
