@@ -11,7 +11,12 @@ module famosSimHits = FamosProducer
     
     # Gaussian or flat or no primary vertex smearing 
     # Now beta function vertex smearing 
-    include "FastSimulation/Event/data/BetaFuncVertexGenerator.cfi"
+    include "FastSimulation/Event/data/EarlyCollisionVertexGenerator.cfi"
+    # include "FastSimulation/Event/data/NominalCollisionVertexGenerator.cfi"
+    # include "FastSimulation/Event/data/NominalCollision1VertexGenerator.cfi"
+    # include "FastSimulation/Event/data/NominalCollision2VertexGenerator.cfi"
+    # include "FastSimulation/Event/data/NominalCollision3VertexGenerator.cfi"
+    # include "FastSimulation/Event/data/NominalCollision4VertexGenerator.cfi"
     # include "FastSimulation/Event/data/GaussianVertexGenerator.cfi"
     # include "FastSimulation/Event/data/FlatVertexGenerator.cfi"
     # include "FastSimulation/Event/data/NoVertexGenerator.cfi"
