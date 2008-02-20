@@ -1,3 +1,11 @@
+# Here so that python translator can see the names
+include "FastSimulation/Event/data/EarlyCollisionVertexGenerator.cfi"
+include "FastSimulation/Event/data/ParticleFilter.cfi"
+include "FastSimulation/MaterialEffects/data/MaterialEffects.cfi"
+include "FastSimulation/TrajectoryManager/data/ActivateDecays.cfi"
+include "FastSimulation/TrajectoryManager/data/TrackerSimHits.cfi"
+include "FastSimulation/Calorimetry/data/Calorimetry.cff"
+
 module famosSimHits = FamosProducer 
 { 
     untracked int32 RunNumber = 1001
