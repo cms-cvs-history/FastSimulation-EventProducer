@@ -10,29 +10,41 @@ include "FastSimulation/Calorimetry/data/Calorimetry.cff"
 
 module famosSimHits = FamosProducer 
 { 
+
+    // The HepMCProduct source
+    InputTag SourceLabel = source
+
+    // The genParticle source (in case there is no HepMCProduct)
+    InputTag GenParticleLabel = genParticles
+
+    // Run Number
     untracked int32 RunNumber = 1001
+
+    // If the following is false, no B field map is used, 
+    // and B is set to 4 T altogether
     bool UseMagneticField = true
+
+    // If false, no SimHits are simulated in the tracker
+    // (but the tracker material is still here)
     bool SimulateTracking = true
+
+    // If false, no PCaloHits are produced
     bool SimulateCalorimetry = true
+
+    // If false, no SimTrack collection for Muons is stored
     bool SimulateMuons = true
+
+    // If false, no misalignment can be applied in the tracker
     bool ApplyAlignment = false
+
     untracked int32 Verbosity = 0
     
-     PSet VertexGenerator =  
-     { 
-         using myVertexGenerator 
-     } 
+    // The primary vertex smearing 
+    PSet VertexGenerator =  
+    { 
+	using myVertexGenerator 
+    } 
 
-
-    # include "FastSimulation/Event/data/NominalCollisionVertexGenerator.cfi"
-    # include "FastSimulation/Event/data/NominalCollision1VertexGenerator.cfi"
-    # include "FastSimulation/Event/data/NominalCollision2VertexGenerator.cfi"
-    # include "FastSimulation/Event/data/NominalCollision3VertexGenerator.cfi"
-    # include "FastSimulation/Event/data/NominalCollision4VertexGenerator.cfi"
-    # include "FastSimulation/Event/data/GaussianVertexGenerator.cfi"
-    # include "FastSimulation/Event/data/FlatVertexGenerator.cfi"
-    # include "FastSimulation/Event/data/NoVertexGenerator.cfi"
-    
     # Kinematic cuts for the particle filter in the SimEvent
     using ParticleFilterBlock
     
