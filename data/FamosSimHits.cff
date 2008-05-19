@@ -17,6 +17,9 @@ module famosSimHits = FamosProducer
     // The genParticle source (in case there is no HepMCProduct)
     InputTag GenParticleLabel = genParticles
 
+    // The beam spot source
+    InputTag BeamSpotLabel = offlineBeamSpot
+
     // Run Number
     untracked int32 RunNumber = 1001
 
