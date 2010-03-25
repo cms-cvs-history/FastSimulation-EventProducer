@@ -74,11 +74,9 @@ void FamosProducer::produce(edm::Event & iEvent, const edm::EventSetup & es)
 
    // The beam spot position
    edm::Handle<reco::BeamSpot> recoBeamSpotHandle;
-   iEvent.getByLabel(theBeamSpotLabel,recoBeamSpotHandle); 
-   //   math::XYZPoint BSPosition_ = recoBeamSpotHandle->position();
-
-   math::XYZPoint BSPosition_ = math::XYZPoint(0.0,0.0,0.0);
-   //   std::cout << "Beam Spot position =" << BSPosition_ << std::endl;
+   bool foundBS = iEvent.getByLabel(theBeamSpotLabel,recoBeamSpotHandle);
+   math::XYZPoint BSPosition_ = foundBS ? recoBeamSpotHandle->position() :
+     math::XYZPoint(0.,0.,0.);
 
    // Get the generated event(s) from the edm::Event
    // 1. Check if a HepMCProduct exists
