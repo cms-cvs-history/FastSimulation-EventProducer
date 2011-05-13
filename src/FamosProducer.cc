@@ -21,6 +21,7 @@
 #include "FastSimulation/Event/interface/PrimaryVertexGenerator.h"
 #include "FastSimulation/Calorimetry/interface/CalorimetryManager.h"
 #include "FastSimulation/TrajectoryManager/interface/TrajectoryManager.h"
+#include "FastSimulation/Event/interface/FSimTrackContainer.h"
 
 #include "HepMC/GenEvent.h"
 #include "HepMC/GenVertex.h"
@@ -35,6 +36,7 @@ FamosProducer::FamosProducer(edm::ParameterSet const & p)
 
     produces<edm::SimTrackContainer>();
     produces<edm::SimVertexContainer>();
+    produces<edm::FSimTrackContainer>();
     produces<FSimVertexTypeCollection>("VertexTypes");
     produces<edm::PSimHitContainer>("TrackerHits");
     produces<edm::PCaloHitContainer>("EcalHitsEB");
@@ -72,8 +74,9 @@ void FamosProducer::produce(edm::Event & iEvent, const edm::EventSetup & es)
 
    // The beam spot position
    edm::Handle<reco::BeamSpot> recoBeamSpotHandle;
-   iEvent.getByLabel(theBeamSpotLabel,recoBeamSpotHandle); 
-   math::XYZPoint BSPosition_ = recoBeamSpotHandle->position();
+   bool foundBS = iEvent.getByLabel(theBeamSpotLabel,recoBeamSpotHandle);
+   math::XYZPoint BSPosition_ = foundBS ? recoBeamSpotHandle->position() :
+     math::XYZPoint(0.,0.,0.);
 
    // Get the generated event(s) from the edm::Event
    // 1. Check if a HepMCProduct exists
@@ -86,6 +89,11 @@ void FamosProducer::produce(edm::Event & iEvent, const edm::EventSetup & es)
    FSimEvent* fevt = famosManager_->simEvent();
    fevt->setBeamSpot(BSPosition_);
    PrimaryVertexGenerator* theVertexGenerator = fevt->thePrimaryVertexGenerator();
+   //   std::cout << "Vertex before = " 
+   //     << theVertexGenerator->X() << ", " 
+   //     << theVertexGenerator->Y() << ", " 
+   //     << theVertexGenerator->Z() << ", " 
+   //     << std::endl;
 
    // Get the generated signal event
    bool source = iEvent.getByLabel(theSourceLabel,theHepMCProduct);
@@ -150,9 +158,11 @@ void FamosProducer::produce(edm::Event & iEvent, const edm::EventSetup & es)
    std::auto_ptr<edm::PCaloHitContainer> p5(new edm::PCaloHitContainer);
    std::auto_ptr<edm::PCaloHitContainer> p6(new edm::PCaloHitContainer); 
    std::auto_ptr<edm::PCaloHitContainer> p7(new edm::PCaloHitContainer);
+   std::auto_ptr<edm::FSimTrackContainer> p8(new edm::FSimTrackContainer);
 
    fevt->load(*p1,*m1);
    fevt->load(*p2);
+   fevt->load(*p8);
    fevt->load(*v1);
    //   fevt->print();
    tracker->loadSimHits(*p3);
@@ -178,6 +188,7 @@ void FamosProducer::produce(edm::Event & iEvent, const edm::EventSetup & es)
    iEvent.put(p5,"EcalHitsEE");
    iEvent.put(p6,"EcalHitsES");
    iEvent.put(p7,"HcalHits");
+   iEvent.put(p8);
 
 }
 
